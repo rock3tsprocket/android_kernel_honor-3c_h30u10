@@ -2639,7 +2639,7 @@ static int tpd_probe(struct i2c_client *client, const struct i2c_device_id *id)
          if(IS_ERR(thread))
          {
              retval = PTR_ERR(thread);
-            // printk(TPD_DEVICE "mtk-tpd:[elan]  failed to create kernel thread: %ld\n", retval);
+             printk(TPD_DEVICE "mtk-tpd:[elan]  failed to create kernel thread: %ld\n", retval);
          }
 
          printk("mtk-tpd:[elan]  ELAN Touch Panel Device Probe %s\n", (retval < TPD_OK) ? "FAIL" : "PASS");
@@ -2692,7 +2692,7 @@ static int tpd_probe(struct i2c_client *client, const struct i2c_device_id *id)
              if(IS_ERR(update_thread))
              {
                 retval = PTR_ERR(update_thread);
-              //  printk(TPD_DEVICE "failed to create kernel update thread: %ld\n", retval);
+                printk(TPD_DEVICE "failed to create kernel update thread: %ld\n", retval);
              }
          }
 #endif

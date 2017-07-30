@@ -1,3 +1,4 @@
 include $(srctree)/drivers/misc/mediatek/Makefile.custom
 
-obj-y   +=  s5k3h2yxaf.o
+obj-y += hi258yuv_Sensor_cmk.o
+

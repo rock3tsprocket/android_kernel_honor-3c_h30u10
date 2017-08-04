@@ -1,4 +1,4 @@
 include $(srctree)/drivers/misc/mediatek/Makefile.custom
 
-obj-y	+= akm09911/cust_mag.o
+obj-y    += kxtj2_1009.o
 

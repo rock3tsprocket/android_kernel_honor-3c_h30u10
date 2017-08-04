@@ -4,32 +4,20 @@ include $(srctree)/drivers/misc/mediatek/Makefile.custom
 # Module project related part
 
 ifeq ($(CONFIG_MTK_SENSOR_SUPPORT),y)
-ifeq ($(CONFIG_MTK_LTR553),y)
-obj-y	+=  alsps/ltr553/
+ifeq ($(CONFIG_MTK_AP3220),y)
+obj-y	+=  alsps/ap3220/
 endif
 
-ifeq ($(CONFIG_MTK_LTR558),y)
-obj-y	+=  alsps/ltr558/
+ifeq ($(CONFIG_MTK_BMA222E_AUTO),y)
+obj-y	+=  accelerometer/bma222E_auto/
 endif
 
-ifeq ($(CONFIG_MTK_STK3X1X),y)
-obj-y	+=  alsps/stk3x1x/
+ifeq ($(CONFIG_MTK_KXTJ2_1009_AUTO),y)
+obj-y	+=  accelerometer/KXTJ2_1009_auto/
 endif
 
-ifeq ($(CONFIG_MTK_BMI058_AUTO),y)
-obj-y	+=  accelerometer/bmi058_auto/
-endif
-
-ifeq ($(CONFIG_MTK_LSM330_AUTO),y)
-obj-y	+=  accelerometer/lsm330_auto/
-endif
-
-ifeq ($(CONFIG_MTK_AKM8963),y)
-obj-y	+=  magnetometer/akm8963/
-endif
-
-ifeq ($(CONFIG_MTK_HSCDTD006_AUTO),y)
-obj-y	+=  magnetometer/hscdtd006_auto/
+ifeq ($(CONFIG_MTK_AKM09911),y)
+obj-y	+=  magnetometer/akm09911/
 endif
 
 ifeq ($(CONFIG_MTK_L3GD20),y)

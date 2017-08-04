@@ -18,7 +18,7 @@ SDIO slot index number used by connectivity combo chip:
 1: MSDC1
 2: MSDC2
 */
-#define CONFIG_MTK_WCN_CMB_SDIO_SLOT  (3) /* MSDC3 */
+#define CONFIG_MTK_WCN_CMB_SDIO_SLOT  (2) /* MSDC0 for temp use */
 #else
 #undef CONFIG_MTK_WCN_CMB_SDIO_SLOT
 #endif

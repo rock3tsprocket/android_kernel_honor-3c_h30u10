@@ -38,3 +38,7 @@ endif
 ifeq ($(CONFIG_MTK_HSCDTD006_AUTO),y)
 obj-y   +=  hscdtd006_auto/
 endif
+
+ifeq ($(CONFIG_MTK_AKM09911),y)
+obj-y   +=  akm09911/
+endif

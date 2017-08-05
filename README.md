@@ -1,4 +1,4 @@
-(WIP) 3.10.54 Kernel Source For Micromax Unite 2
+3.10.54 Kernel Source For Micromax Unite 2
 ------
 
 		sudo apt-get install ccache

@@ -21,10 +21,6 @@
 #include <linux/delay.h>
 #include "yusu_android_speaker.h"
 
-
-#include <mach/mt_gpio.h>
-#include <mach/mt_typedefs.h>
-
 /*****************************************************************************
 *                C O M P I L E R      F L A G S
 ******************************************************************************
@@ -36,13 +32,23 @@
 #define PRINTK(format, args...)
 #endif
 
+#define AMP_CLASS_AB
+//#define AMP_CLASS_D
+//#define ENABLE_2_IN_1_SPK
 
+#if !defined(AMP_CLASS_AB) && !defined(AMP_CLASS_D)
+#error "MT6323 SPK AMP TYPE does not be defined!!!"
+#endif
 /*****************************************************************************
 *                          C O N S T A N T S
 ******************************************************************************
 */
 
 #define SPK_WARM_UP_TIME        (55) //unit is ms
+#define SPK_AMP_GAIN            (4)  //4:15dB
+#define RCV_AMP_GAIN            (1)  //1:-3dB
+#define SPK_R_ENABLE            (1)
+#define SPK_L_ENABLE            (1)
 /*****************************************************************************
 *                         D A T A      T Y P E S
 ******************************************************************************
@@ -60,8 +66,12 @@ extern void Yusu_Sound_AMP_Switch(BOOL enable);
 bool Speaker_Init(void)
 {
    PRINTK("+Speaker_Init Success");
-   mt_set_gpio_mode(GPIO_SPEAKER_EN_PIN,GPIO_MODE_00);  // gpio mode
-   mt_set_gpio_pull_enable(GPIO_SPEAKER_EN_PIN,GPIO_PULL_ENABLE);
+#if defined(AMP_CLASS_AB)
+
+#elif defined(AMP_CLASS_D)
+
+#endif
+   
    PRINTK("-Speaker_Init Success");
    return true;
 }
@@ -94,11 +104,19 @@ void Sound_SpeakerR_SetVolLevel(int level)
 void Sound_Speaker_Turnon(int channel)
 {
     PRINTK("Sound_Speaker_Turnon channel = %d\n",channel);
-	if(gsk_on)
-		return;
-    mt_set_gpio_dir(GPIO_SPEAKER_EN_PIN,GPIO_DIR_OUT); // output
-    mt_set_gpio_out(GPIO_SPEAKER_EN_PIN,GPIO_OUT_ONE); // high
-    msleep(SPK_WARM_UP_TIME);
+    if(gsk_on)
+        return;
+#if defined(ENABLE_2_IN_1_SPK)
+#if defined(AMP_CLASS_D)
+
+#endif
+#endif
+#if defined(AMP_CLASS_AB)
+
+#elif defined(AMP_CLASS_D)
+
+#endif
+    //msleep(SPK_WARM_UP_TIME);
     gsk_on = true;
 }
 
@@ -107,8 +125,11 @@ void Sound_Speaker_Turnoff(int channel)
     PRINTK("Sound_Speaker_Turnoff channel = %d\n",channel);
 	if(!gsk_on)
 		return;
-    mt_set_gpio_dir(GPIO_SPEAKER_EN_PIN,GPIO_DIR_OUT); // output
-    mt_set_gpio_out(GPIO_SPEAKER_EN_PIN,GPIO_OUT_ZERO); // high
+#if defined(AMP_CLASS_AB)
+
+#elif defined(AMP_CLASS_D)
+
+#endif
 	gsk_on = false;
 }
 
@@ -117,15 +138,34 @@ void Sound_Speaker_SetVolLevel(int level)
     Speaker_Volume =level;
 }
 
-
 void Sound_Headset_Turnon(void)
 {
-
 }
 
 void Sound_Headset_Turnoff(void)
 {
+}
 
+void Sound_Earpiece_Turnon(void)
+{
+#if defined(ENABLE_2_IN_1_SPK)
+
+#if defined(AMP_CLASS_D)
+
+#endif
+
+#endif
+}
+
+void Sound_Earpiece_Turnoff(void)
+{
+#if defined(ENABLE_2_IN_1_SPK)
+
+#if defined(AMP_CLASS_D)
+
+#endif
+
+#endif
 }
 
 //kernal use

@@ -168,3 +168,10 @@ ifeq ($(CONFIG_MTK_EKTF2K_S5222),y)
 obj-y	+=  ektf2k_s5222/
 endif
 
+ifeq ($(CONFIG_MTK_CY8CTMA),y)
+obj-y	+=  cy8ctma/
+endif
+
+ifeq ($(CONFIG_MTK_S7020_NEW),y)
+obj-y	+=  S7020_NEW/
+endif

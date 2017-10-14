@@ -91,6 +91,8 @@
 #define COMPAT_KDIMGSENSORIOC_X_GETRESOLUTION2      _IOWR(IMGSENSORMAGIC, 10, COMPAT_ACDK_SENSOR_PRESOLUTION_STRUCT)
 #endif
 
+#define OV5645MIPI_SENSOR_ID                    0x5645
+#define OV5648MIPI_SENSOR_ID                    0x5648
 /*******************************************************************************
 *
 ********************************************************************************/
@@ -234,6 +236,13 @@
 
 #define IMX058_SENSOR_ID                        0x0058
 #define IMX073_SENSOR_ID                        0x0046
+#define IMX134_SENSOR_ID                        0x0134
+
+//add liteon and sunny IMX134 module driver and para for H30
+#define IMX134LITEON_SENSOR_ID                        0x1340 //real sensor id is 0x0134; liteon module id value is 0
+#define IMX134SUNNY_SENSOR_ID                        0x1341 //real sensor id is 0x0134; sunny module id value is 1
+#define IMX219_SENSOR_ID                      0x0219
+#define OV8858_SENSOR_ID                      0x8858
 #define SIV120B_SENSOR_ID                       0x0012
 #define MT9V113_SENSOR_ID                       0x2280
 #define MT9V114_SENSOR_ID                       0x2283
@@ -300,6 +309,7 @@
 #define CAMERA_HW_DEVNAME            "kd_camera_hw"
 
 /* SENSOR DEVICE DRIVER NAME */
+#define SENSOR_DRVNAME_OV5648_MIPI_RAW   	"ov5648mipi"
 #define SENSOR_DRVNAME_IMX179_MIPI_RAW   "imx179mipiraw"
 #define SENSOR_DRVNAME_IMX178_MIPI_RAW   "imx178mipiraw"
 #define SENSOR_DRVNAME_OV2722_MIPI_RAW  "ov2722mipiraw"
@@ -354,6 +364,11 @@
 #define SENSOR_DRVNAME_SHARP3D_MIPI_YUV    "sharp3dmipiyuv"
 #define SENSOR_DRVNAME_MT9T113_MIPI_YUV    "mt9t113mipiyuv"
 #define SENSOR_DRVNAME_IMX105_MIPI_RAW   "imx105mipiraw"
+#define SENSOR_DRVNAME_IMX134_MIPI_RAW   "imx134mipiraw"
+
+//add liteon and sunny IMX134 module driver and para for H30
+#define SENSOR_DRVNAME_IMX134LITEON_MIPI_RAW   "imx134liteonmipiraw"
+#define SENSOR_DRVNAME_IMX134SUNNY_MIPI_RAW   "imx134sunnymipiraw"
 #define SENSOR_DRVNAME_OV8830_RAW   	       "ov8830"
 #define SENSOR_DRVNAME_0V9726_RAW		"ov9726raw"
 #define SENSOR_DRVNAME_OV9726_MIPI_RAW		"ov9726mipiraw"
